@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+    {% block title %}reciver {% endblock %}
+
+
+{% block body %}
+<div class="container py-4">
+<center>
+<form method="post" action="{% url 'reciver' %}">
+    {% csrf_token %}
+  <div class="mb-3 py-4" style="border:1px solid black">
+      {% if True %}
+      <input type='text' style="border:None;color:white" name="sender_id" value= "{{sender.id}}">
+     {% endif %}
+  <h3>Select Customer to which money will be send</h2>
+    <br>
+    <select class="form-select form-select-sm" aria-label="Default select example" style="width:auto" required name="s">
+      <option selected>Select Customer</option>
+      {% for reciver in recivers %}
+      <option value="{{ reciver.id }}">({{ reciver.id }}) {{ reciver.name }}</option>
+    {% endfor %}
+    </select><br>
+    <hr />
+    <input type="number" class="form-control" placeholder="Amount" style="width:90px" name="amount" required>
+    <hr>
+  <button type="submit" class="btn btn-primary">Send Money</button>
+  
+  </div>
+</form>
+</center>
+</div>
+
+{% endblock %}
