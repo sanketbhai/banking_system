@@ -19,7 +19,7 @@ def reciver(request):
         To.save()
         return redirect(index)
     else:
-        HttpResponse('nosufficent balence')
+        return HttpResponse('nosufficent balence')
     
     
 def index(request):
