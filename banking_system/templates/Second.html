@@ -5,16 +5,16 @@
 {% block body %}
 <div class="container py-4">
 <center>
-<form method="post" action="{% url 'reciver' %}">
+<form method="post" action="{% url 'moneyTransfer' %}">
     {% csrf_token %}
   <div class="mb-3 py-4" style="border:1px solid black">
       {% if True %}
-      <input type='text' style="border:None;color:white" name="sender_id" value= "{{sender.id}}">
+      <input type='text' style="border:None;color:white" name="senderId" value= "{{sender.id}}">
      {% endif %}
   <h3>Select Customer to which money will be send</h2>
     <br>
-    <select class="form-select form-select-sm" aria-label="Default select example" style="width:auto" required name="s">
-      <option selected>Select Customer</option>
+    <select class="form-select form-select-sm" aria-label="Default select example" style="width:auto" required name="reciverId">
+      <option selected disabled>Select Customer</option>
       {% for reciver in recivers %}
       <option value="{{ reciver.id }}">({{ reciver.id }}) {{ reciver.name }}</option>
     {% endfor %}
@@ -26,7 +26,12 @@
   
   </div>
 </form>
+
 </center>
 </div>
-
+<script type = "text/javascript" >  
+    function preventBack() { window.history.forward(); }  
+    setTimeout("preventBack()", 0);  
+    window.onunload = function () { null };  
+</script> 
 {% endblock %}

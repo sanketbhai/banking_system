@@ -12,23 +12,33 @@
   </head>
   <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Banking Demo</a>
-  </div>
-</nav>
+<nav class="navbar mb-4 navbar-collaps-sm navbar-expand-lg navbar-dark bg-dark">
 
-{% block body%}
+  <div class=" container-fluid">
+      
+    <a class=" navbar-brand" href="#">Banking Demo</a>
+  </div>
+
+</nav>
+{% if messages %}
+{% for message in messages %}
+<div class="alert container alert-success alert-dismissible">
   
+  <strong>Attention !</strong> {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% block body%}
+
 <div class="container py-4">
 <center>
-<form method="post" , action="{% url 'index' %}" >
+<form method="post" , action="{% url 'showProfile' %}" >
   {% csrf_token %}
 
   <div class="mb-3 py-4" style="border:1px solid black">
   <h3>Select Customer from which money will be send</h2>
 
-    <select class="form-select form-select-sm" aria-label="Default select example" style="width:auto" name="s" >
+    <select class="form-select form-select-sm" aria-label="Default select example" style="width:auto" name="senderId" >
 
       <option selected>Select Sender</option>
     {%for sender in senders %}

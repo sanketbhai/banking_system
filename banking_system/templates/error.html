@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+
+{% block title %}
+ error {% endblock %}
+ 
+ 
+{% body block %}
+ {% for message in massage %}
+  <h1 class="danger">{{ meassage }}</h1>
+ {% endfor %}
+{% end block %}

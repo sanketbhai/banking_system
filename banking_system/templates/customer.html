@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+    {% block title %}customerdetail {% endblock %}
+
+
+{% block body %}
+
+<div class="container py-4">
+
+<form method="post" action= "{% url 'showProfile' %}" >
+        {% csrf_token %}
+     <div class="container py-4 my-3" style="border:1px solid black">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"> 
+            <div class="mb-3">
+             <label for="customerId" class="form-label"><b>Account Id : </b>
+             </label>
+             <input type='text' style="border:none" name="customerId" value= "{{customer.id}}" readonly>
+            </div>
+          </li>
+          <li class="list-group-item"> 
+           <div class="mb-3">
+             <label for="customerEmail" class="form-label"><b>Email address : </b>
+             </label>
+             <span>{{ customer.email }}</span>
+           </div>
+          </li>
+          <li class="list-group-item">  
+           <div class="mb-3">
+             <label for="customerName" class="form-label"><b>Name : </b>
+             </label>
+             <span>{{ customer.name}}</span>
+           </div>
+          </li>
+          <li class="list-group-item">   
+           <div class="mb-3">
+             <label for="customerBalence" class="form-label">
+                <b>Current Balence : </b>
+             </label>
+             <span>{{ customer.current_balence}}</span>
+           </div>
+          </li>
+          <li class="list-group-item">   <button type="submit" class="btn btn-danger">Go Ahead</button>
+          </li>
+        </ul>
+
+     </div>
+</form>
+
+
+</div>
+
+
+{% endblock %}

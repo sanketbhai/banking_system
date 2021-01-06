@@ -19,5 +19,7 @@ from . import views
 
 urlpatterns = [
     path('',views.index,name='index'),
-    path('reciver/',views.reciver,name='reciver')
+    
+    path('showProfile/',views.showProfile,name='showProfile'),
+    path('moneyTransfer/',views.moneyTransfer,name='moneyTransfer')
 ]
